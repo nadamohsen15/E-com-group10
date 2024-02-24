@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="../Styles/all.min.css" />
+    <link rel="stylesheet" href="../Styles/font-awesome.min.css" />
+    <link rel="stylesheet" href="../Styles/bootstrap.css" />
+    <link rel="stylesheet" href="../Styles/navbar_footer_styles.css" />
+    <link rel="stylesheet" href="admin_style.css" />
+    <link
+      rel="icon"
+      href="../Resources/Images/logo/svg/White logo - no background.svg"
+      type="image/png"
+    />
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- ************************** Side Bar ****************************-->
+      <aside id="sidebar-wrapper">
+        <div class="sidebar-brand">
+          <img
+            src="../Resources/Images/logo/png/White logo - no background.png"
+            alt=""
+            srcset=""
+            id="sidebar-logo"
+          />
+        </div>
+        <ul class="sidebar-nav">
+          <li>
+            <a href="admin.html" data-tab="0"
+              ><i class="fa fa-user"></i>Manage Users</a
+            >
+          </li>
+          <li>
+            <a href="manage_products.html" data-tab="1"
+              ><i class="fa fa-boxes-stacked"></i>Manage Products</a
+            >
+          </li>
+          <li>
+            <a href="customer_service.html" data-tab="2"
+              ><i class="fa fa-headset"></i>Customer Service</a
+            >
+          </li>
+          <li>
+            <a href="adminOrders.html" data-tab="3"
+              ><i class="fa fa-cart-shopping"></i>Orders</a
+            >
+          </li>
+          <li>
+            <a href="approveSellers.html" data-tab="3"
+              ><i class="fa fa-person-circle-check"></i>Approve Sellers</a
+            >
+          </li>
+        </ul>
+      </aside>
+      <!-- ************************** NEW NAV BAR  ****************************-->
+      <div id="navbar-wrapper">
+        <nav class="navbar navbar-inverse sticky-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a href="#" class="navbar-brand" id="sidebar-toggle"
+                ><i class="fa fa-bars"></i
+              ></a>
+            </div>
+            <ul class="nav navbar-nav ml-auto">
+              <li>
+                <a href="../index.html" id="logout" onclick="logoutAdmin()">
+                  <i class="fa-solid fa-right-from-bracket"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <!-- **************************  Admin Panel  ****************************-->
+      <section id="content-wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="container my-5 border rounded">
+              <h3 class="text text-center p-3">Orders</h3>
+
+              <!--******************** Search Input with Icon ******************** -->
+              <div class="row my-3">
+                <form class="d-flex">
+                  <div class="col-md-4 offset-4">
+                    <div class="input-group">
+                      <input
+                        id="dateInput"
+                        class="form-control me-2"
+                        type="date"
+                        aria-label="Search"
+                      />
+                      <button
+                        class="btn btn-dark"
+                        type="button"
+                        onclick="searchOrdersByDate()"
+                      >
+                        Search
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-hover" id="userTable">
+                  <thead>
+                    <tr>
+                      <th>Order Id</th>
+                      <th>Customer Name</th>
+                      <th>Order Status</th>
+                      <th>Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sellerOrdersTableBody"></tbody>
+                </table>
+              </div>
+
+              <!-- ************************** Pagination  ****************************-->
+              <div class="row justify-content-center mt-3">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a
+                        class="page-link"
+                        href="#"
+                        id="prevPage"
+                        aria-label="Previous"
+                      >
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <div class="pagination-numbers"></div>
+
+                    <li class="page-item">
+                      <a
+                        class="page-link"
+                        href="#"
+                        id="nextPage"
+                        aria-label="Next"
+                      >
+                        <span aria-hidden="true">&raquo; </span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- View Detail Modal-->
+    <div class="modal" id="orderDetailsModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Order Details</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="orderDetailsModalContent"></div>
+        </div>
+      </div>
+    </div>
+
+    <main></main>
+
+    <script src="../Scripts/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="navigation_script.js"></script>
+    <script src="adminOrders.js"></script>
+    <script src="../Scripts/bootstrap.bundle.js"></script>
+  </body>
+</html>
